@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {   //* Se ejecuta al hacer la migracion
         Schema::table('users', function (Blueprint $table) {
-            $table->string("username"); //* Añadir a la tabla users el atributo username, se debe arrancar la migracion para que funcione
+            //* Añadir a la tabla users el atributo username, se debe arrancar la migracion para que funcione
+            //* Unique evitara que se creen cuentas con el mismo username
+            $table->string("username")->unique();
         });
     }
 

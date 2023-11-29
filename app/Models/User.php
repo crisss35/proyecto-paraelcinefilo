@@ -17,10 +17,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    //* Estos son los datos que esperamos del usuario, los que se van a insertar en la BD
     protected $fillable = [
         'name',
         'email',
         'password',
+        'username',
     ];
 
     /**
