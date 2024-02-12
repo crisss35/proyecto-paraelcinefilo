@@ -2,20 +2,25 @@
 
 
 @section("titulo")
-    Crea una nueva publicacion
+    Crear publicacion
 @endsection
 
+@push("styles") {{-- Cargar la hoja de estilos de dropzone --}}
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />    
+@endpush
 
 
 @section("contenido")
     
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
-            Imagen Aqui
+            <form action="{{ route("imagenes.store") }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+                @csrf
+            </form>
         </div>
 
         <div class="md:w-1/2 p-10 bg-gray-100 rounded-sm shadow mt-10 md:mt-0">
-            <form action="{{ route("register") }}" method="POST" novalidate>
+            <form action="{{ route("posts.store") }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="titulo" class="text-gray-600 font-bold mb-2 block">Titulo</label>
@@ -40,14 +45,24 @@
                     <label for="descripcion" class="text-gray-600 font-bold mb-2 block">Descripcion</label>
                     <textarea
                         class="border p-2 w-full rounded-lg shadow focus: border-gray-300 @error("name") border-red-500 @enderror" 
+                        id="descripcion"
                         name="descripcion" 
-                        id="descripcion" 
                         placeholder="Descripcion de la Publicacion"
                     >{{ old("descripcion") }}</textarea>    
                 </div>
 
                 
-                @error("titulo")
+                @error("descripcion")
+                    <p class="bg-red-500 text-white rounded-lg text-center text-sm p-1.5 mb-2">
+                        {{ $message }}
+                    </p>
+                @enderror
+
+                <div class="mb-5">
+                    <input type="hidden" name="imagen" value="{{ old("imagen") }}">
+                </div>
+
+                @error("imagen")
                     <p class="bg-red-500 text-white rounded-lg text-center text-sm p-1.5 mb-2">
                         {{ $message }}
                     </p>
