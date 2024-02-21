@@ -42,38 +42,30 @@ Route::get('/reviews', function () {
 Route::get('/login', [LoginController::class, "index"])->name("login");
 Route::post('/login', [LoginController::class, "store"]);
 
-//* Cerrar la sesion
 Route::post('/logout', [LogoutController::class, "store"])->name("logout");
 
-//* Rutas para el perfil
 Route::get('/editar-perfil', [PerfilController::class, 'index'])->name("perfil.index");
 Route::post('/editar-perfil', [PerfilController::class, 'store'])->name("perfil.store");
 
-//* Para mostrar el nombre del usuario en la URL
-Route::get('/{user:username}', [PostController::class, "index"])->name("posts.index");
 
 //* Mostrar el fomulario para crear publicaciones
 Route::get('/posts/create', [PostController::class, 'create'])->name("posts.create");
-
-//* Ruta que ejecutara el codigo para crear las publicaciones
 Route::post('/posts', [PostController::class, 'store'])->name("posts.store");
 
 //* Ruta para ver un post especifico + nombre del usuario asociado a dicho post
 Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name("posts.show");
-
-//* Ruta para eliminar comentarios
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name("post.destroy");
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name("posts.destroy");
 
 //* Ruta para insertar comentarios
 Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name("comentarios.store");
-
 Route::post('/imagenes', [ImagenController::class, 'store'])->name("imagenes.store");
 
 //* Like para las publicaciones
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name("posts.likes.store");
-
-//* Eliminar like
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name("posts.likes.destroy");
+
+//* Para mostrar el nombre del usuario en la URL
+Route::get('/{user:username}', [PostController::class, "index"])->name("posts.index");
 
 
 //* Siguiendo a usuarios

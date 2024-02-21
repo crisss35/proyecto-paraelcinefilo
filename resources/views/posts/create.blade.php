@@ -14,7 +14,8 @@
     
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
-            <form action="{{ route("imagenes.store") }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+            <form action="{{ route("imagenes.store") }}" method="POST" enctype="multipart/form-data" id="dropzone" 
+                class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
                 @csrf
             </form>
         </div>
@@ -25,7 +26,7 @@
                 <div class="mb-5">
                     <label for="titulo" class="text-gray-600 font-bold mb-2 block">Titulo</label>
                     <input 
-                        class="border p-2 w-full rounded-lg shadow focus: border-gray-300 @error("name") border-red-500 @enderror" 
+                        class="border p-2 w-full rounded-lg shadow focus:border-gray-300 @error("titulo") border-red-500 @enderror" 
                         type="text" 
                         name="titulo" 
                         id="titulo" 
@@ -44,7 +45,7 @@
                 <div class="mb-5">
                     <label for="descripcion" class="text-gray-600 font-bold mb-2 block">Descripcion</label>
                     <textarea
-                        class="border p-2 w-full rounded-lg shadow focus: border-gray-300 @error("name") border-red-500 @enderror" 
+                        class="border p-2 w-full rounded-lg shadow focus: border-gray-300 @error("descripcion") border-red-500 @enderror" 
                         id="descripcion"
                         name="descripcion" 
                         placeholder="Descripcion de la Publicacion"
