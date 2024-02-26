@@ -64,7 +64,7 @@ Route::post('/imagenes', [ImagenController::class, 'store'])->name("imagenes.sto
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name("posts.likes.store");
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name("posts.likes.destroy");
 
-//* Para mostrar el nombre del usuario en la URL
+//* Para mostrar el nombre de usuario en la URL
 Route::get('/{user:username}', [PostController::class, "index"])->name("posts.index");
 
 
