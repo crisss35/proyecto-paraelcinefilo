@@ -14,6 +14,7 @@
         @vite("resources/css/app.css")
         @vite("resources/js/app.js")
 
+        {{-- Añadir livewire --}}
         @livewireStyles
     </head>
     <body class="m-0 p-0 min-h-screen flex flex-col">
